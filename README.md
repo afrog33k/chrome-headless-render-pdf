@@ -1,6 +1,7 @@
-# This tool require Google Chrome installed in version min 59 to work!
+# This tool requires Google Chrome >=59 to work!
 
-# Usage: 
+# Usage:
+
 ```
 chrome-headless-render-pdf [OPTIONS] --url=URL --pdf=OUTPUT-FILE [--url=URL2 --pdf=OUTPUT-FILE2] ...
   Options:
@@ -14,6 +15,8 @@ chrome-headless-render-pdf [OPTIONS] --url=URL --pdf=OUTPUT-FILE [--url=URL2 --p
     --window-size            specify window size, width(,x*)height (e.g. --window-size 1600,1200 or --window-size 1600x1200)
     --paper-width            specify page width in inches (defaults to 8.5 inches)
     --paper-height           specify page height in inches (defaults to 11 inches)
+    --extra-cli-options      extra command line options to be passed directly to the chrome binary on the command line (ex. --extra-cli-options="--ignore-certificate-errors --hide-scrollbars")
+
 
   Example:
     Render single pdf file
@@ -25,6 +28,7 @@ chrome-headless-render-pdf [OPTIONS] --url=URL --pdf=OUTPUT-FILE [--url=URL2 --p
 ```
 
 # This tool can be also used programmatically:
+
 ```
 const RenderPDF = require('chrome-headless-render-pdf');
 RenderPDF.generateSinglePdf('http://google.com', 'outputPdf.pdf'});
@@ -47,12 +51,14 @@ RenderPDF.generatePdfBuffer('http://google.com')
 ```
 
 # you can also use it from typescript or es6
+
 ```
 import RenderPDF from 'chrome-headless-render-pdf';
 RenderPDF.generateSinglePdf('http://google.com', 'outputPdf.pdf'});
 ```
 
 # Motivation
-google-chrome currently have option to render pdf files when used with headless option. 
+
+google-chrome currently have option to render pdf files when used with headless option.
 But this option contains hardcoded adding header and footer to page rendering it unusable for pdf generation.
 This module allows to generate it without those elements.
